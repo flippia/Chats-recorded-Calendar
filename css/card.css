@@ -1,0 +1,99 @@
+.card{
+    position: fixed;
+    width: 32rem;
+    height: 44rem;
+    top: 49%;
+    left: 80%;
+    transition: all 0.6s ease;
+    overflow: hidden;
+    background: rgb(247, 244, 207);
+    border-radius: 10px;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    z-index: 5;    
+}
+.card .close-button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 2rem;
+    font-weight: bold;
+}
+.card.active{
+    transform: translate(-50%, -50%) scale(1);
+}
+.header{
+    font-family: 'Permanent Marker', cursive;
+     /* only one option for this font, regular 400 */
+    font-size: 3rem;
+    background-color: rgb(204, 204, 204);
+    position: absolute;
+    height: 7rem;
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    top: 0;    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.content{
+    margin-top: 7rem;
+    width: 100%;    
+    font-size: 1.5rem;
+    height: 37rem;
+    overflow: auto;    
+}
+ul.list{
+    list-style-type: none;
+    margin: 0px;
+    padding: 10px;
+    font-size: medium;
+}
+div.time{
+    width: 100%;
+    position: relative;
+    margin: 5px 0;
+    text-align: center;
+    border: solid rgb(247, 244, 207);
+}
+span.time{
+    background-color: lightgray;
+    border-radius: 3px;
+    padding: 6px 8px;
+    font-size: small;
+}
+
+.leftChat .img{
+    position: relative;
+    /* margin-bottom: 15px; */
+}
+.leftChat .item{
+    position: relative;
+    top: -40px;
+    left: 50px;
+    max-width: 250px;
+    margin-bottom: 15px;
+}
+.rightChat .item{
+    position: relative;
+    float: right;
+    right: 50px;
+    max-width: 250px;
+    margin-bottom: 15px;
+    color: teal;
+}
+.rightChat .img{
+    position: relative;
+    left: 450px;
+    margin-bottom: 15px;
+}
+div img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+::-webkit-scrollbar {
+    display: none;
+}
