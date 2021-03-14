@@ -1,7 +1,7 @@
 [
-    {"user":"A","content":"hello 你好","time":"10am10"},
-    {"user":"B","content":"hello 你好吖","time":"10am11"},
-    {"user":"B","content":"how are you doing 今天感觉怎么样？","time":""},
-    {"user":"A","content":"good, how are you doing 感觉很好，你感觉怎么样呢？","time":""},
-    {"user":"B","content":"Not bad 还不赖","time":"10am13"}
+    {"user":"A","content":"hello","time":"10am10"},
+    {"user":"B","content":"hello","time":"10am11"},
+    {"user":"B","content":"how are you doing?","time":""},
+    {"user":"A","content":"good, how are you doing?","time":""},
+    {"user":"B","content":"Not bad","time":"10am13"}
 ]
