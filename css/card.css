@@ -53,8 +53,8 @@ ul.list{
 }
 div.time{
     width: 100%;
-    position: relative;
-    margin: 5px 0;
+    /* position: relative; */
+    margin-bottom: 15px;
     text-align: center;
     border: solid rgb(247, 244, 207);
 }
@@ -64,30 +64,33 @@ span.time{
     padding: 6px 8px;
     font-size: small;
 }
-
-.leftChat .img{
-    position: relative;
-    /* margin-bottom: 15px; */
+.leftChat .layout{
+    /* position: relative; */
+    display: flex;
+    align-items: flex-start;
+    margin: 10px 0 15px;
 }
 .leftChat .item{
-    position: relative;
-    top: -40px;
-    left: 50px;
     max-width: 250px;
-    margin-bottom: 15px;
+    margin-left: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+.rightChat .layout{
+    /* position: relative; */
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    margin: 10px 0 15px;
 }
 .rightChat .item{
-    position: relative;
-    float: right;
-    right: 50px;
     max-width: 250px;
-    margin-bottom: 15px;
+    margin-right: 10px;
+    border: 2px solid teal;
+    border-radius: 5px;
+    padding: 5px 10px;
     color: teal;
-}
-.rightChat .img{
-    position: relative;
-    left: 450px;
-    margin-bottom: 15px;
 }
 div img{
     width: 40px;
