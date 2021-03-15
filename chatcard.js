@@ -60,11 +60,13 @@ const conversation = items => {
 };
 
 days.addEventListener('click', e => { 
+    const originalMonth = date.getMonth();
     list.innerHTML = "";       
     date.setDate(e.target.innerText);
     chosenday.innerHTML = `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
     getChats(jsonMonths[date.getMonth()],("0"+e.target.innerText).slice(-2),date.getFullYear()).then(items => conversation(items));
     openCard();
+    date.setMonth(originalMonth, 1);
 });
 
 closeButton.addEventListener('click', () => {
