@@ -76,6 +76,8 @@ span.time{
     border: 2px solid black;
     border-radius: 5px;
     padding: 5px 10px;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 .rightChat .layout{
     /* position: relative; */
@@ -91,6 +93,8 @@ span.time{
     border-radius: 5px;
     padding: 5px 10px;
     color: teal;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 div img{
     width: 40px;
