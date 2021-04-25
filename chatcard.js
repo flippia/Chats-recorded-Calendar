@@ -1,3 +1,5 @@
+const list = document.querySelector('.list');
+
 const days = document.querySelector('.days');
 // console.log(days);
 const chosenday = document.querySelector('.chosenday');
@@ -6,7 +8,7 @@ const closeButton = document.querySelector('.close-button');
 
 const overlay = document.getElementById('overlay');
 
-const getChats = async(mon,date,year) => {
+const getChats = async(mon, date, year) => {
     const response = await fetch(`chats/${mon}${date}${year}.json`);
     const data = await response.json();        
     return data;    
@@ -23,8 +25,10 @@ const conversation = items => {
                         <div class="time">
                             <span class="time">${item.time}</span>
                         </div>
-                        <div class="img"><img src="pic/Smile and say Carrots rabbit.jpg"></div>
-                        <div class="item">${item.content}</div>
+                        <div class="layout">
+                            <div class="img"><img src="pic/Smile and say Carrots rabbit.jpg"></div>
+                            <div class="item">${item.content}</div>
+                        </div>
                     </li>
                 `;
             } else {
@@ -33,8 +37,10 @@ const conversation = items => {
                         <div class="time">
                             <span class="time">${item.time}</span>
                         </div>
-                        <div class="item">${item.content}</div>
-                        <div class="img"><img src="pic/Smile and say Carrots fox.jpg"></div>
+                        <div class="layout">
+                            <div class="img"><img src="pic/Smile and say Carrots fox.jpg"></div>
+                            <div class="item">${item.content}</div>
+                        </div>
                     </li>
                 `;
             }
@@ -42,15 +48,19 @@ const conversation = items => {
             if(item.user === 'A'){
                 html = `
                     <li class="leftChat">
-                        <div class="img"><img src="pic/Smile and say Carrots rabbit.jpg"></div>
-                        <div class="item">${item.content}</div>
+                        <div class="layout">
+                            <div class="img"><img src="pic/Smile and say Carrots rabbit.jpg"></div>
+                            <div class="item">${item.content}</div>
+                        </div>
                     </li>
                 `;
             } else {
                 html = `
                     <li class="rightChat">
-                        <div class="item">${item.content}</div>
-                        <div class="img"><img src="pic/Smile and say Carrots fox.jpg"></div>
+                        <div class="layout">
+                            <div class="img"><img src="pic/Smile and say Carrots fox.jpg"></div>
+                            <div class="item">${item.content}</div>
+                        </div>
                     </li>
                 `;
             }        
@@ -59,14 +69,36 @@ const conversation = items => {
     });
 };
 
-days.addEventListener('click', e => { 
-    const originalMonth = date.getMonth();
-    list.innerHTML = "";       
-    date.setDate(e.target.innerText);
-    chosenday.innerHTML = `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
-    getChats(jsonMonths[date.getMonth()],("0"+e.target.innerText).slice(-2),date.getFullYear()).then(items => conversation(items));
-    openCard();
-    date.setMonth(originalMonth, 1);
+// days.addEventListener('click', e => {
+//     console.log(e.target.classList);
+//     if(!e.target.childElementCount && !e.target.classList.contains('pre-date') && !e.target.classList.contains('next-date')){
+//         list.innerHTML = "";
+//         date.setDate(e.target.innerText);
+//         chosenday.innerHTML = `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+//         getChats(jsonMonths[date.getMonth()],("0"+e.target.innerText).slice(-2),date.getFullYear()).then(items => conversation(items));
+//         openCard();
+//         date.setDate(1);
+//     }
+// });
+
+days.addEventListener('click', e => {
+    // console.log(e.target.innerText);
+    if(!e.target.childElementCount){
+        if(e.target.classList.contains('pre-date')) {
+            date.setMonth(date.getMonth() - 1, e.target.innerText);
+        } else if (e.target.classList.contains('next-date')) {
+            date.setMonth(date.getMonth() + 1, e.target.innerText);
+        } else { date.setDate(e.target.innerText); }
+        list.innerHTML = "";
+        chosenday.innerHTML = `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+        getChats(jsonMonths[date.getMonth()], ("0" + e.target.innerText).slice(-2), date.getFullYear()).then(items => conversation(items));
+        openCard();
+        if(e.target.classList.contains('pre-date')) {
+            date.setMonth(date.getMonth() + 1, 1);
+        } else if (e.target.classList.contains('next-date')) {
+            date.setMonth(date.getMonth() - 1, 1);
+        } else { date.setDate(1); }
+    }
 });
 
 closeButton.addEventListener('click', () => {
